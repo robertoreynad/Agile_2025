@@ -5,7 +5,7 @@ from .summary_tool import load_transactions, summarize_totals
 
 def main():
     # Example placeholder path; update as needed
-    csv_path = "data/financial_transactions.csv"
+    csv_path = "data/ROSA_financial_transactions.csv"
 
     print("ROSA – Financial Transactions Summary Tool")
     print("Loading transactions from:", csv_path)

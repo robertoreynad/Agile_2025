@@ -41,3 +41,25 @@ A user story is considered **Done** when:
 - Tests or usage examples are updated as needed.
 - The story is marked complete in Taiga.
 - It is merged into the main branch (`main` or `master`) without conflicts.
+
+
+## 6. Sprint Goal
+
+Build a simple Python package that reads the dataset, cleans it, and shows key financial insights. Work will be tracked in Taiga and code shared on GitHub.
+
+
+## 7. User Stories and Acceptance Criteria (initial ideas)
+
+We are planning a few stories: Load and clean data, show monthly cash flow, analyse spending by category, list top merchants, run everything with one command and finally add all the documentation.
+
+
+## 8. Project Structure (draft)
+
+We plan to keep the project simple and organised as a basic setup like:
+To have a README and requirements, also a data folder for the dataset. It is important also, to have a src folder with modules (loader, summary, analysis, plots) and a main.py to run all.
+
+## 9. Collaboration Workflow (draft)
+
+We are planning to have:
+GitHub, where we are going to see the branches per feature, pull requests, commits linked to user stories.
+Taiga, where we are going to see the backlog with stories, tasks moving To Do → In Progress → Done, instructor added.

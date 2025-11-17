@@ -50,40 +50,12 @@ By the end of this one-week sprint, deliver a reusable, well-documented Python p
 
 ## 7. User Stories and Acceptance Criteria
 
-| ID   | As a...          | I want to...                                               | So that...                          | Points | Acceptance Criteria                                                                 |
-|------|------------------|------------------------------------------------------------|-------------------------------------|--------|--------------------------------------------------------------------------------------|
-| US01 | financial user   | load and clean the transactions CSV                        | I have reliable data to analyse     | 3      | • Date parsed correctly<br>• Missing values handled<br>• Duplicates removed<br>• Returns clean DataFrame |
-| US02 | financial user   | see total income, expenses and net balance per month       | I can track monthly cash flow       | 3      | • Returns DataFrame with Year-Month, Income, Expense, Net                           |
-| US03 | financial user   | view spending broken down by category                      | I know where my money goes          | 5      | • Returns sorted DataFrame<br>• matplotlib bar chart saved as PNG                   |
-| US04 | financial user   | see my top 10 merchants by amount spent                    | I can identify biggest spending places | 3   | • Returns DataFrame<br>• Horizontal bar chart                                       |
-| US05 | developer / user | run the whole analysis with one command                    | I can demo or reuse the tool easily | 3      | • `python -m financial_summary` works<br>• Prints tables<br>• Saves plots to `/output` folder |
-| US06 | future developer | have clear documentation and examples                      | Anyone can understand and extend the code | 2  | • Detailed README<br>• Docstrings on all public functions<br>• `requirements.txt`   |
 
-**Total Story Points: 19**
 
 
 ## 8. Project Structure
 
-```
-financial-transactions-summary/
-├── .gitignore
-├── README.md
-├── requirements.txt
-├── data/
-│   └── Financial_Transactions_Dataset.csv   # (add manually, gitignored if large)
-├── src/
-│   └── financial_summary/
-│       ├── __init__.py
-│       ├── loader.py
-│       ├── monthly_summary.py
-│       ├── category_analysis.py
-│       ├── merchant_analysis.py
-│       └── plots.py
-├── main.py
-├── tests/
-│   └── test_summary_tool.py
-└── output/   # (gitignored – plots go here)
-```
+
 
 
 ## 9. Collaboration Workflow

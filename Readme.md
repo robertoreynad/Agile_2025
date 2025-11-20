@@ -62,7 +62,8 @@ We plan to define 7-9 user stories that guides the work. The idea is that these 
 
 ## 8. Project Structure
 
-The plan to keep the project simple and organized is going to be: A README file for instructions, a requirements file for dependencies, a data folder for the dataset, a src folder with modules for loading data, monthly summary, category analysis, merchant analysis, and plots and a main file to run the whole analysis.
+We plan to keep the project simple and organised as a basic setup like:
+To have a README and requirements, also a data folder for the dataset. It is important also, to have a src folder with modules (loader, summary, analysis, plots) and a main.py to run all.
 
 ## 9. Collaboration Workflow
 

@@ -45,21 +45,33 @@ A user story is considered **Done** when:
 
 ## 6. Sprint Goal
 
-Build a simple Python package that reads the dataset, cleans it, and shows key financial insights. Work will be tracked in Taiga and code shared on GitHub.
+Our goal is to build a simple Python package that can read the dataset, clean it, and give some useful financial insights. We also want to make sure the work is clear in Taiga and that everyone collaborates through GitHub.
 
 
-## 7. User Stories and Acceptance Criteria (initial ideas)
 
-We are planning a few stories: Load and clean data, show monthly cash flow, analyse spending by category, list top merchants, run everything with one command and finally add all the documentation.
+## 7. User Stories and Acceptance Criteria
+
+We plan to define 7-9 user stories that guides the work. The idea is that these USs reflect the main needs of the project and connect with the technical scope we have already discussed. User stories:
+- Load and clean the transaction data so it is reliable.
+- Show monthly income and expenses to see cash flow.
+- Break down spending by category, with a chart.
+- List the top merchants where most money is spent.
+- Run everything with one command to make it easy to demo.
+- Add documentation and examples so future developers can understand the code.
 
 
-## 8. Project Structure (draft)
+## 8. Project Structure
 
 We plan to keep the project simple and organised as a basic setup like:
 To have a README and requirements, also a data folder for the dataset. It is important also, to have a src folder with modules (loader, summary, analysis, plots) and a main.py to run all.
 
-## 9. Collaboration Workflow (draft)
+## 9. Collaboration Workflow
 
-We are planning to have:
-GitHub, where we are going to see the branches per feature, pull requests, commits linked to user stories.
-Taiga, where we are going to see the backlog with stories, tasks moving To Do → In Progress → Done, instructor added.
+In GitHub:
+  We intend to follow a branch-per-feature approach (e.g., feature/US01-loader, feature/US02-monthly-summary).
+  Each change will go through a pull request, with at least one peer review before merging.
+  Commits will be tagged with the corresponding User Story ID to keep a clear link between code and backlog items.
+
+In Taiga:
+  The backlog will contain all user stories, each with story points assigned.
+  Within each story, we will create tasks that move across the board: To Do → In Progress → Done.

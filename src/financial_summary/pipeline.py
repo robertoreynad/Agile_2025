@@ -6,11 +6,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
 
-# Directorios y rutas
-OUTPUT_DIR = "charts_saved"
-DATA_PATH = "../data/ROSA_financial_transactions.csv"
+OUTPUT_DIR = "../output"
+DATA_PATH = "data/ROSA_financial_transactions.csv"
 
-# Palabras clave para categorías
+# category keywords
 category_keywords = {
     "Groceries": ["supermarket", "grocery", "food", "market", "sainsbury", "tesco", "aldi", "lidl", "whole foods", "eats", "meal", "fresh"],
     "Transport": ["bus", "train", "uber", "taxi", "fuel", "petrol", "gas", "transport", "metro", "car", "ride", "road", "way", "direction"],
@@ -23,7 +22,7 @@ category_keywords = {
     "Salary": ["salary", "paycheck", "income", "wage", "payroll"]
 }
 
-# Merchants simulados por categoría
+# Merchants simulated by category
 category_merchants = {
     "Groceries": ["Tesco", "WholeFoods", "Aldi", "Lidl"],
     "Transport": ["Uber", "Lyft", "Metro", "Greyhound"],
@@ -37,8 +36,6 @@ category_merchants = {
     "Miscellaneous": ["OtherMerchant"]
 }
 
-# Formato de valores monetarios
-
 
 def format_currency(x, pos=None):
     if x >= 1_000_000:
@@ -47,7 +44,7 @@ def format_currency(x, pos=None):
         return f"{x * 1e-3:.1f}K"
     return f"{x:.0f}"
 
-# Cargar datos
+# load data
 
 
 def load_data(path: str = DATA_PATH) -> pd.DataFrame:
@@ -55,28 +52,29 @@ def load_data(path: str = DATA_PATH) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df
 
-# Limpiar y categorizar
+# cleaning
 
 
 def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     print("[clean] Cleaning descriptions and assigning categories...")
-    df["cleaned_description"] = ""
+    df["cleaned_description"] = df["description"].str.lower().apply(
+        lambda x: re.sub(r"[\W_]+", " ", str(x))
+    )
     df["Category"] = "Miscellaneous"
     for category, keywords in category_keywords.items():
         for keyword in keywords:
             mask = df["cleaned_description"].str.contains(keyword, na=False)
             df.loc[mask, "Category"] = category
 
-    # Merchant simulado por categoría
+    # simulate merchant by category
     df["merchant"] = df["Category"].apply(lambda cat: np.random.choice(
         category_merchants.get(cat, ["OtherMerchant"])
     ))
 
-    # Asegurar numérico
     df["amount"] = pd.to_numeric(df["amount"], errors="coerce").fillna(0)
     return df
 
-# Resúmenes
+# summary
 
 
 def run_summaries(df: pd.DataFrame) -> dict:
@@ -86,15 +84,15 @@ def run_summaries(df: pd.DataFrame) -> dict:
     by_merchant = df.groupby("merchant")["amount"].sum(
     ).sort_values(ascending=False).reset_index()
 
-    print("\nresumen de categorias:")
+    print("\nCategory summary:")
     print(by_category)
 
-    print("\nTop 10  comerciantes por gastos:")
+    print("\nTop 10 merchants by spending:")
     print(by_merchant.head(10))
 
     return {"by_category": by_category, "by_merchant": by_merchant}
 
-# Gráficos
+# Charts
 
 
 def generate_charts(summaries: dict) -> None:
@@ -104,7 +102,8 @@ def generate_charts(summaries: dict) -> None:
     # Spending by Category
     cat = summaries["by_category"]
     plt.figure(figsize=(10, 6))
-    ax = sns.barplot(x="amount", y="Category", data=cat, palette="Set2")
+    ax = sns.barplot(x="amount", y="Category", data=cat,
+                     hue="Category", legend=False, palette="Set2")
     plt.title("Spending by Category")
     plt.xlabel("Total Spending")
     plt.ylabel("Category")
@@ -125,8 +124,9 @@ def generate_charts(summaries: dict) -> None:
     # Top 10 merchants
     mer = summaries["by_merchant"].head(10)
     plt.figure(figsize=(10, 6))
-    ax = sns.barplot(x="amount", y="merchant", data=mer, palette="Set2")
-    plt.title("Top 10 Merchants by Total Spending (Simulated by Category)")
+    ax = sns.barplot(x="amount", y="merchant", data=mer,
+                     hue="merchant", legend=False, palette="Set2")
+    plt.title("Top 10 Merchants by Total Spending")
     plt.xlabel("Total Spending")
     plt.ylabel("Merchant")
     plt.gca().xaxis.set_major_formatter(FuncFormatter(format_currency))
@@ -143,7 +143,7 @@ def generate_charts(summaries: dict) -> None:
                 bbox_inches="tight")
     plt.close()
 
-# Pipeline completo
+# Pipeline
 
 
 def run_pipeline():

@@ -24,11 +24,12 @@ Become a team that collaborates effectively using GitHub and Taiga, delivering m
 
 ## 4. Working Agreements
 
-- Primary communication channel: WhatsApp.
+- Primary communication channel: WhatsApp / teams group.
 - Maximum response time to team messages: within 12 hours.
-- Coordination meetings: two meetings during the sprint—one at the start and one at the midpoint.
+- Coordination meetings: Daily standup: Every day at 9:00 PM
 - All tasks must be created and updated in Taiga before work begins.
 - No direct merges to `main`: all changes require a pull request with at least one review.
+- Progress, blockers, screenshots and PR links must be documented
 - If a member cannot complete an assigned task, they must notify the team as soon as possible.
 
 ## 5. Definition of Done
@@ -36,28 +37,41 @@ Become a team that collaborates effectively using GitHub and Taiga, delivering m
 A user story is considered **Done** when:
 
 - The code is implemented and runs without errors.
-- It has been reviewed by at least one teammate via pull request.
+- It has been reviewed by the QA rol.
 - Basic comments/docstrings are added to key functions.
 - Tests or usage examples are updated as needed.
 - The story is marked complete in Taiga.
-- It is merged into the main branch (`main` or `master`) without conflicts.
+- It is merged into the main branch (`main`) without conflicts.
 
 
 ## 6. Sprint Goal
 
-Our goal is to build a simple Python package that can read the dataset, clean it, and give some useful financial insights. We also want to make sure the work is clear in Taiga and that everyone collaborates through GitHub.
-
+Deliver a complete Python analysis pipeline capable of:
+- Loading and cleaning the transactions dataset
+- Normalizing descriptions
+- Categorizing income and expenses
+- Generating financial summaries
+- Creating visualizations
+- Additionally, ensure the work is fully reflected in GitHub and Taiga following Agile practices.
 
 
 ## 7. User Stories and Acceptance Criteria
 
-We plan to define 7-9 user stories that guides the work. The idea is that these USs reflect the main needs of the project and connect with the technical scope we have already discussed. User stories:
-- Load and clean the transaction data so it is reliable.
-- Show monthly income and expenses to see cash flow.
-- Break down spending by category, with a chart.
-- List the top merchants where most money is spent.
-- Run everything with one command to make it easy to demo.
-- Add documentation and examples so future developers can understand the code.
+The project included:
+
+Discovery User Stories (Sprint 0)
+	1.	Team roles & alignment meeting
+	2.	Tool scope & capabilities definition
+	3.	Sprint planning ceremony
+	4.	GitHub repository setup
+
+Development User Stories (Sprint 1)
+	•	US #5: Load & clean dataset
+	•	US #6: Monthly income, expenses & net summary
+	•	US #7: Category spending breakdown + chart
+	•	US #8: Top 10 merchants by spending
+	•	US #9: Full pipeline execution
+	•	US #10: Documentation
 
 
 ## 8. Project Structure
@@ -67,6 +81,9 @@ To have a README and requirements, also a data folder for the dataset. It is imp
 
 ## 9. Collaboration Workflow
 
+aily status updates
+	•	Comments, attachments, screenshots, and blockers documented per User Story
+
 In GitHub:
   We intend to follow a branch-per-feature approach (e.g., feature/US01-loader, feature/US02-monthly-summary).
   Each change will go through a pull request, with at least one peer review before merging.
@@ -74,4 +91,5 @@ In GitHub:
 
 In Taiga:
   The backlog will contain all user stories, each with story points assigned.
-  Within each story, we will create tasks that move across the board: To Do → In Progress → Done.
+  Within each story, we will create tasks that move across the board: New → In Progress → Ready for test → Done.
+  Status updates as: Comments, attachments, screenshots, issues/bugs and blockers documented per User Story.

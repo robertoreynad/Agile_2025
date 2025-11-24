@@ -93,3 +93,7 @@ In Taiga:
   The backlog will contain all user stories, each with story points assigned.
   Within each story, we will create tasks that move across the board: New → In Progress → Ready for test → Done.
   Status updates as: Comments, attachments, screenshots, issues/bugs and blockers documented per User Story.
+
+## 10. Streamlit
+
+	https://agile2025-3huqqiz7qny7zqecdhzxfn.streamlit.app/
